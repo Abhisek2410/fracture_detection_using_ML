@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/premium-photo/abstract-illustration-background-wallpaper-design-colorful-art-geometry-shapes_877869-4307.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(179, 167, 167, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center; 
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .first-aid-container {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #090808;
+            margin-bottom: 20px; /* Add space below the heading */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3c403c;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: #333332;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            background-color: rgba(5, 4, 4, 0.8);
+
+            border-radius: 10px;
+            font-size: 24px;
+            color: #f2f2f2;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>FRACTURE PREDICTION MODEL(Naive Bayes)</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td><input type="text" name="age"></td>
+                    </tr>
+                    <tr>
+                        <td>Sex:</td>
+                        <td><input type="text" name="sex"></td>
+                    </tr>
+                    <tr>
+                        <td>Weight (kg):</td>
+                        <td><input type="text" name="kg"></td>
+                    </tr>
+                    <tr>
+                        <td>Height (cm):</td>
+                        <td><input type="text" name="cm"></td>
+                    </tr>
+                    <tr>
+                        <td>Medication:</td>
+                        <td><input type="text" name="med"></td>
+                    </tr>
+                    <tr>
+                        <td>Bone Mass Density:</td>
+                        <td><input type="text" name="bmd"></td>
+                    </tr>
+                </table>
+                <button type="submit" name="Submit">Predict</button>
+            </form>
+            <p class="result">{{result}}</p>
+        </div>
+        <div class="first-aid-container">
+            <h2>First Aid for Fracture:</h2>
+            <ul>
+                <li>Keep the injured area immobilized.</li>
+                <li>Elevate the injured limb if possible.</li>
+                <li>Apply ice to reduce swelling (use a cloth or towel to protect the skin).</li>
+                <li>Do not try to realign the bones.</li>
+                <li>Seek immediate medical attention.</li>
+            </ul>
+            <h2>Additional Tips:</h2>
+            <ul>
+                <li>Keep the person calm and reassure them.</li>
+                <li>Cover any open wounds with a sterile dressing.</li>
+                <li>Do not give the person anything to eat or drink.</li>
+                <li>Keep them warm with a blanket if needed.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
